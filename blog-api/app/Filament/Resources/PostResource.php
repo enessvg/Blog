@@ -100,8 +100,6 @@ class PostResource extends Resource
                                 ->columnSpanFull()
                                 ->required(),
 
-
-
                             Toggle::make('is_visible')
                                 ->label('Visibility')
                                 ->helperText('Enable or disable post visibility')
@@ -120,14 +118,12 @@ class PostResource extends Resource
                                 Hidden::make('user_id')
                                 ->default($user_id),
 
-
                         ])
                         ->columns(3),
                 ])
                 ->columnSpanFull(),
         ]);
 }
-
     public static function table(Table $table): Table
     {
         return $table
