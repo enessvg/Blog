@@ -30,7 +30,11 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-c-list-bullet';
 
     protected static ?string $navigationGroup = 'Blog';
+
     protected static ?int $navigationSort = 0;
+
+    protected static ?string $recordTitleAttribute = 'name';
+
 
 
     public static function form(Form $form): Form

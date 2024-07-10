@@ -14,6 +14,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -36,6 +37,10 @@ class PostResource extends Resource
     protected static ?string $navigationGroup = 'Blog';
 
     protected static ?int $navigationSort = 1;
+
+    protected static ?string $recordTitleAttribute = 'title';
+
+    // protected static ?string $recordTitleAttribute = 'tags';
 
 
     public static function form(Form $form): Form
@@ -85,9 +90,14 @@ class PostResource extends Resource
                                 ->options($categoryOptions)
                                 ->required(),
 
+                                TagsInput::make('tags')
+                                ->label('Tags')
+                                ->required()
+                                ->columnSpanFull(),
+
                             MarkdownEditor::make('content')
                                 ->label('Post details')
-                                ->columnSpan('full')
+                                ->columnSpanFull()
                                 ->required(),
 
 
@@ -103,7 +113,9 @@ class PostResource extends Resource
 
                             DatePicker::make('end_date')
                                 ->label('End Date')
-                                ->default(now()),
+                                ->default(now())
+                                ->after("starterDate")
+                                ->minDate(now()->addDay()),
 
                                 Hidden::make('user_id')
                                 ->default($user_id),
@@ -122,7 +134,8 @@ class PostResource extends Resource
             ->columns([
                 ImageColumn::make('image'),
 
-                TextColumn::make('title'),
+                TextColumn::make('title')
+                ->searchable(),
 
                 TextColumn::make('content')
                 ->label('Content')
@@ -133,6 +146,10 @@ class PostResource extends Resource
                 ->sortable()
                 ->searchable(),
 
+                TextColumn::make('user.name')
+                ->label('Author')
+                ->sortable()
+                ->searchable(),
 
                 IconColumn::make('is_visible')
                 ->sortable()

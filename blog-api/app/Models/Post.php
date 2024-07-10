@@ -22,6 +22,7 @@ class Post extends Model
         'post_views',
         'start_date',
         'end_date',
+        'tags',
     ];
 
     public function user(): BelongsTo

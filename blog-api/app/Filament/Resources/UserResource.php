@@ -42,7 +42,10 @@ class UserResource extends Resource
 
                         TextInput::make('email')->unique(ignoreRecord: true),
 
-                        TextInput::make('password')->unique(ignoreRecord: true),
+                        TextInput::make('password')
+                        ->password()
+                        ->dehydrated(fn ($state) => filled($state)) // sadece şifre dolu ise güncellemeyi aktif et
+                        ->nullable(), // Şifre boş bırakılabilir
 
                         Select::make('roles')
                         ->relationship('roles', 'name')
