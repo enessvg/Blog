@@ -33,10 +33,15 @@ class PostController extends Controller
         ->where('is_visible', 1)
         ->get();
 
+        $postArray = $post->toArray();
+        $postArray['category_id'] = $post->category->name;
+        $postArray['user_id'] = $post->user->name;
+
+
 
         return response()->json([
             'message' => 'Item found',
-            'post' => $post,
+            'post' => $postArray,
             'comments' => $comments
         ], 200);
     }

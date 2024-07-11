@@ -58,7 +58,7 @@ class CommentController extends Controller
 
 
             // Başarılı mesajı
-            return response()->json(['message' => 'Comment saved.'], 201);
+            return response()->json(['message' => 'Comment successfully saved.'], 201);
         } catch (\Exception $e) {
             //Beklenmeyen hataları yakalamak için
             return response()->json(['message' => 'An error occurred while trying to save the item!', 'error' => $e->getMessage()], 500);
