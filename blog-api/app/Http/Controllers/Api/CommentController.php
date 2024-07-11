@@ -42,6 +42,8 @@ class CommentController extends Controller
             $item->content = $request->content;
             $item->save();
 
+
+
             // Başarılı mesajı
             return response()->json(['message' => 'Comment saved.'], 201);
         } catch (\Exception $e) {

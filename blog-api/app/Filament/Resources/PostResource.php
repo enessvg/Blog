@@ -107,13 +107,15 @@ class PostResource extends Resource
 
                             DatePicker::make('start_date')
                                 ->label('Start Date')
-                                ->default(now()),
+                                ->default(now())
+                                ->required(),
 
                             DatePicker::make('end_date')
                                 ->label('End Date')
                                 ->default(now())
                                 ->after("starterDate")
-                                ->minDate(now()->addDay()),
+                                ->minDate(now()->addDay())
+                                ->required(),
 
                                 Hidden::make('user_id')
                                 ->default($user_id),
