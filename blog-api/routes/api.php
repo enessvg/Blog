@@ -22,5 +22,4 @@ Route::get('/post/detail/{slug}',[PostController::class, "show"]);
 Route::get('/comments', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
 
-
 #COMMENTS

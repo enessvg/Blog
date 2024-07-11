@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendSuperAdminEmailJob;
 use Illuminate\Http\Request;
 use App\Models\Comments;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class CommentController extends Controller
 {
@@ -43,6 +46,16 @@ class CommentController extends Controller
             $item->save();
 
 
+        // Super Admin rolünü bul
+        $superAdminRole = Role::where('name', 'super_admin')->first();
+
+        // Bu role sahip kullanıcıların e-posta adreslerini bul
+        $superAdminEmails = User::role($superAdminRole->name)->pluck('email');
+
+        foreach ($superAdminEmails as $email) {
+            SendSuperAdminEmailJob::dispatch($email);
+        }
+
 
             // Başarılı mesajı
             return response()->json(['message' => 'Comment saved.'], 201);
@@ -51,4 +64,13 @@ class CommentController extends Controller
             return response()->json(['message' => 'An error occurred while trying to save the item!', 'error' => $e->getMessage()], 500);
         }
     }
+
+    // public function getsuperadmin(){
+
+    //     $superAdminRole = Role::where('name', 'super_admin')->first();
+
+    //     $superAdminUsers = User::role($superAdminRole->name)->pluck('email');
+
+    //     return $superAdminUsers;
+    // }
 }
