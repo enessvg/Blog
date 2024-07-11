@@ -147,6 +147,10 @@ class PostResource extends Resource
                 ->sortable()
                 ->searchable(),
 
+                TextColumn::make('post_views')
+                ->label('View Count')
+                ->sortable(),
+
                 IconColumn::make('is_visible')
                 ->sortable()
                 ->toggleable()
