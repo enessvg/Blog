@@ -26,10 +26,13 @@ class PostController extends Controller
             return response()->json(['message' => 'The post you are trying to view was not found!'], 404);
         }
 
-        // Post'un id'sini kullanarak ilgili yorumları çek
+        $post->post_views += 1;
+        $post->save();
+
         $comments = Comments::where('post_id', $post->id)
-        ->where('is_visible', 1) // Sadece görünür yorumları seç
+        ->where('is_visible', 1)
         ->get();
+
 
         return response()->json([
             'message' => 'Item found',
