@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\SiteSettingsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,12 @@ Route::get('/post/detail/{slug}',[PostController::class, "show"]);
 #COMMENTS
 Route::get('/comments', [CommentController::class, 'index']);
 Route::post('/comments', [CommentController::class, 'store']);
-
 #COMMENTS
+
+#Site Settings
+
+Route::get('/kvkk-aydinlatma-metni', [SiteSettingsController::class, 'kvkk']);
+Route::get('/privacy-policy', [SiteSettingsController::class, 'privacy_policy']);
+
+
+#Site Settings

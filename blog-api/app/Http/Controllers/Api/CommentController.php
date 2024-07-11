@@ -64,13 +64,4 @@ class CommentController extends Controller
             return response()->json(['message' => 'An error occurred while trying to save the item!', 'error' => $e->getMessage()], 500);
         }
     }
-
-    // public function getsuperadmin(){
-
-    //     $superAdminRole = Role::where('name', 'super_admin')->first();
-
-    //     $superAdminUsers = User::role($superAdminRole->name)->pluck('email');
-
-    //     return $superAdminUsers;
-    // }
 }
