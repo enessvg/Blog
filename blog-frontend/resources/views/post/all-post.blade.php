@@ -26,7 +26,7 @@
                                 src="http://localhost:8181/storage/{{ $posts['image'] }}" alt="" />
                         </a>
                         <div class="p-5">
-                            <a href="#">
+                            <a href="post/detail/{{ $posts['slug'] }}">
                                 <h5
                                     class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white fixed-title">
                                     {{ $posts['title'] }}</h5>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\SiteSettingsController;
@@ -15,10 +16,15 @@ Route::get('/post', [PostController::class, 'index']);
 Route::get('/popular-post', [PostController::class, 'populerPost']);
 Route::get('/post/detail/{slug}',[PostController::class, "show"]);
 
-
-
-
 #POST
+
+#Category
+Route::get('/category', [CategoryController::class, 'index']);
+Route::get('/category/{slug}',[CategoryController::class, 'show']);
+
+
+#Category
+
 
 #COMMENTS
 Route::get('/comments', [CommentController::class, 'index']);

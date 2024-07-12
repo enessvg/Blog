@@ -53,6 +53,7 @@ class PostController extends Controller
         ->where('is_visible', 1)
         ->get();
 
+
         // Bağlantılı tabloları dahil etmek için category_id sine göre categories tablosunda bulup onun ismini yazdırıyor user_id içinde aynı şekilde.
         $postArray = $post->toArray();
         $postArray['category_id'] = $post->category->name;

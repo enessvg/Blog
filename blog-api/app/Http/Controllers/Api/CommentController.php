@@ -55,8 +55,6 @@ class CommentController extends Controller
         foreach ($superAdminEmails as $email) {
             SendSuperAdminEmailJob::dispatch($email);
         }
-
-
             // Başarılı mesajı
             return response()->json(['message' => 'Comment successfully saved.'], 201);
         } catch (\Exception $e) {

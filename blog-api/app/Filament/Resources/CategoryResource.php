@@ -69,7 +69,8 @@ class CategoryResource extends Resource
                         ->default(true),
 
                         MarkdownEditor::make('description')
-                        ->columnSpanFull(),
+                        ->columnSpanFull()
+                        ->required(),
 
                     ])->columns(3),
                 ])->columnSpanFull()

@@ -1,4 +1,4 @@
-@include('inc/navbar')
+@include('inc/navbar', ['allCategory' => $allCategory])
 
 <div class="m-135">
     <div class="grid gap-4 p-5 mb-5 mt-5">
