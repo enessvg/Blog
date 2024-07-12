@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ES-Blog</title>
+  @if(empty($post))
+  <title>ES-Blog </title>
+  @else
+  <title>{{ $post['title'] }} | ES-Blog </title>
+  @endif
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
