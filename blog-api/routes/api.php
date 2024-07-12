@@ -12,6 +12,7 @@ Route::get('/user', function (Request $request) {
 
 #POST
 Route::get('/post', [PostController::class, 'index']);
+Route::get('/popular-post', [PostController::class, 'populerPost']);
 Route::get('/post/detail/{slug}',[PostController::class, "show"]);
 
 

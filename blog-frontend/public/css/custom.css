@@ -2,6 +2,10 @@
     margin: 1px 135px 1px 135px;
 }
 
+.mt-30{
+    margin-top: 30px;
+}
+
 .comment-container{
     border: 1px solid #3a5389;
     border-radius: 20px;
@@ -20,9 +24,52 @@
     color: #f9fafb;
   }
 
-  @media only screen and (max-width: 991px){
+.fixed-card {
+    width: 380px; /* Kart genişliğini için */
+    height: 511px; /* Kart yüksekliğini için */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fixed-image {
+    width: 100%;
+    height: 281px; /* Resim yüksekliğini sabitlemeke için */
+    object-fit: cover; /* Resmin kart içindeki alanı kaplamasını sağlar */
+}
+
+.fixed-title {
+    height: 32px;
+    /* Başlık yüksekliğini sabitler */
+    overflow: hidden;
+    /* Başlığın taşmasını önler */
+}
+
+.fixed-content {
+    height: 100px;
+    /* İçerik yüksekliğini sabitler */
+    overflow: hidden;
+    /* İçeriğin taşmasını önler */
+}
+
+.danger-alert-spe{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 991px){
     .m-135{
         margin: 0px;
     }
+}
 
+@media only screen and (max-width: 376px){
+    .fixed-card {
+        width: 335px; /* Kart genişliğini için */
+        height: 511px; /* Kart yüksekliğini için */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }

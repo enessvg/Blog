@@ -11,4 +11,11 @@ Route::get('/', function () {
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('post/detail/{slug}', [FrontendPostController::class, 'show']);
-Route::get('/post/all', [FrontendPostController::class,'index']);
+
+
+
+Route::get('/kvkk-aydinlatma-metni', [HomeController::class,'kvkk']);
+Route::get('/gizlilik-politikasi', [HomeController::class,'privacy_policy']);
+
+// Route::get('/post/all', [FrontendPostController::class,'index']);
+// Route::get('/post/populer', [FrontendPostController::class,'popularPost']);

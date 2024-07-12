@@ -34,10 +34,10 @@
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="#" class="hover:underline">Privacy Policy</a>
+                          <a href="/gizlilik-politikasi" class="hover:underline">Gizlilik Politikası</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                          <a href="/kvkk-aydinlatma-metni" class="hover:underline">KVKK Aydınlatma Metni</a>
                       </li>
                   </ul>
               </div>

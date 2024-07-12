@@ -10,13 +10,24 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->where('is_visible', 1)->get(); //en son ki yazı başa gelmesi için böyle yaptım.
         return response()->json([
             'status' => true,
             'message' => 'Listing successful',
             'post' => $posts,
         ], 200);
     }
+
+    public function populerPost()
+    {
+        $posts = Post::orderBy('post_views', 'desc')->where('is_visible', 1)->get();
+        return response()->json([
+            'status' => true,
+            'message' => 'Listing successful',
+            'post' => $posts,
+        ], 200);
+    }
+
 
     public function show($slug){
         // Post'u slug ile bul
@@ -26,8 +37,10 @@ class PostController extends Controller
             return response()->json(['message' => 'The post you are trying to view was not found!'], 404);
         }
 
+        //Görüntülemeyi arttırmak için(To increase viewing)
         $post->post_views += 1;
         $post->save();
+
 
         $comments = Comments::where('post_id', $post->id)
         ->where('is_visible', 1)
@@ -40,7 +53,7 @@ class PostController extends Controller
 
 
         return response()->json([
-            'message' => 'Item found',
+            'message' => 'Post found',
             'post' => $postArray,
             'comments' => $comments
         ], 200);

@@ -49,7 +49,7 @@
                 class="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-6xl lg:text-6xl dark:text-white">
                 {{ $post['title'] }}
             </h1>
-            <div class="flex gap-4">
+            <div class="flex gap-4 mt-30">
                 <div class="text-gray-500 dark:text-gray-400 flex">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -78,6 +78,12 @@
                     </svg>
                     <p class="ml-1">{{ $post['post_views'] }}</p>
                 </div>
+                <div class="text-gray-500 dark:text-gray-400 flex">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+                      </svg>
+                    <p class="ml-1">{{ \Carbon\Carbon::parse($post['created_at'])->format('d-m-Y') }}</p>
+                </div>
             </div>
 
             <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
@@ -102,22 +108,39 @@
         <div class="mt-3">
             <h3 class="text-3xl font-bold dark:text-white">Comments</h3>
             <div class="mt-2">
-                @foreach ($comments as $comment)
-                    <div class="comment-container">
-                        <h3 class="text-xl font-bold dark:text-white mt-3">{{ $comment['name'] }}</h3>
-                        <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                            {{ $comment['content'] }}</p>
-                        <p class="text-lg font-normal text-gray-500 lg:text-sm dark:text-gray-400">
-                            {{ \Carbon\Carbon::parse($comment['created_at'])->format('d-m-Y') }}
-                        </p>
+                @if (empty($comments)) {{-- Boşmu değilmi kontrolünü sağlıyorum boşsa uyarı çıkması için --}}
+                <div class="flex items-center p-4 mt-5 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                      <span class="font-medium">No comments on this post! </span>
                     </div>
-                @endforeach
+                  </div>
+                @else
+                    @foreach ($comments as $comment)
+                        <div class="comment-container">
+                            <h3 class="text-xl font-bold dark:text-white mt-3">{{ $comment['name'] }}</h3>
+                            <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+                                {{ $comment['content'] }}
+                            </p>
+                            <p class="text-lg font-normal text-gray-500 lg:text-sm dark:text-gray-400">
+                                {{ \Carbon\Carbon::parse($comment['created_at'])->format('d-m-Y') }}
+                            </p>
+                        </div>
+                    @endforeach
+                @endif
+
+
+
             </div>
         </div>
 
         <div class="mt-3">
             <h3 class="text-3xl font-bold dark:text-white mb-3">Send Comment</h3>
             <form>
+
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label for="name_surname"
@@ -141,7 +164,7 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Comment Detail..." required></textarea>
                 </div>
-
+                <input type="hidden" name="id" value="{{ $post['id'] }}">
                 <button type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Send
                     comment</button>
