@@ -103,7 +103,9 @@ class PostResource extends Resource
                             Toggle::make('is_visible')
                                 ->label('Visibility')
                                 ->helperText('Enable or disable post visibility')
-                                ->default(true),
+                                ->default(true)
+                                // ->hidden(fn() => ! auth()->user()->hasRole(['admin']));
+                                ,
 
                             DatePicker::make('start_date')
                                 ->label('Start Date')

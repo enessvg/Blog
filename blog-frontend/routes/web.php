@@ -23,3 +23,8 @@ Route::get('/category/{slug}', [HomeController::class, 'SingleCategory']);
 Route::get('/kvkk-aydinlatma-metni', [HomeController::class,'kvkk']);
 Route::get('/gizlilik-politikasi', [HomeController::class,'privacy_policy']);
 
+
+
+Route::get('/comment-post', [HomeController::class,'commentGet']); //kendimce sayfayı korumak amaçlı yaptım.
+Route::post('/comment-post', [HomeController::class, 'commentPost'])->name('commentPost');
+
