@@ -41,7 +41,10 @@ class PostController extends Controller
         $post = Post::where('slug', $slug)->where('is_visible', 1)->first();
 
         if (!$post) {
-            return response()->json(['message' => 'The post you are trying to view was not found!'], 404);
+            return response()->json([
+                'status' => false,
+                'message' => 'The post you are trying to view was not found!'
+            ], 404);
         }
 
         //Görüntülemeyi arttırmak için(To increase viewing)
@@ -60,6 +63,7 @@ class PostController extends Controller
         $postArray['user_id'] = $post->user->name;
 
         return response()->json([
+            'status' => true,
             'message' => 'Post found',
             'post' => $postArray,
             'comments' => $comments

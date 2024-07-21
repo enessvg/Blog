@@ -29,6 +29,11 @@ class HomeController extends Controller
     public function SingleCategory($slug){
         $response = Http::get("http://localhost:8181/api/category/{$slug}");
 
+        if ($response->json()['status'] === false) {
+            // Kategori bulunamadıysa 404 sayfasına yönlendir
+            abort(404, 'The category you are trying to view was not found!');
+        }
+
         $categorie = $response->json()['categories'];
 
         $CategoryPost = $response->json()['posts'];
