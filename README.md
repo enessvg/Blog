@@ -4,7 +4,7 @@ Not: Projeyi çalıştırabilmek için bilgisayarınızda <a href="https://www.d
 Projeyi istediğiniz yöntemle bilgisayaranıza yükleyin
 
 blog-api klasörüne girin <br>
-<code>docker-compose up -d -build</code> <br>
+<code>docker-compose up -d --build</code> <br>
 komudunu çalıştırın. Projeniz dockere kurulacaktır.
 
 env dosyası için <br> <code>copy .env.example .env</code> <br> komutunu çalıştırın. Mail işlemleri içinde mail ayarlarınızı yapmayı unutmayın.
