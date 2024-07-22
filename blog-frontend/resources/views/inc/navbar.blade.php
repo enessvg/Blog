@@ -11,6 +11,8 @@
   @endif
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/prism.min.css') }}">
+
 </head>
 
 <body class="dark-mode">

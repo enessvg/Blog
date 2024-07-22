@@ -27,6 +27,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
 {
@@ -95,7 +96,7 @@ class PostResource extends Resource
                                 ->required()
                                 ->columnSpanFull(),
 
-                            MarkdownEditor::make('content')
+                            TinyEditor::make('content')
                                 ->label('Post details')
                                 ->columnSpanFull()
                                 ->required(),

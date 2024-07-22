@@ -4,6 +4,8 @@ blog-api klasörüne girin <br>
 <code>docker-compose up -d -build</code> <br>
 komudunu çalıştırın.
 
+env dosyası için <br> <code>copy .env.example .env</code> <br> komutunu çalıştırın. Mail işlemleri içinde mail ayarlarınızı yapmayı unutmayın.
+
 Proje ayağa kalktığı zaman filamentphp için admin kullanıcısı oluşturmak için <br>
 <code> php artisan make:filament-user </code>
 komudunu kullanın. <br>
