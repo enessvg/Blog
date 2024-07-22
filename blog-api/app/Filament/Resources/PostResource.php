@@ -135,7 +135,8 @@ class PostResource extends Resource
                 ImageColumn::make('image'),
 
                 TextColumn::make('title')
-                ->searchable(),
+                ->searchable()
+                ->limit(30),
 
                 TextColumn::make('content')
                 ->label('Content')

@@ -90,7 +90,8 @@
 
             <div class="">
                 <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                    {{ $post['content'] }}
+                    {{-- nl2br kullanımında \n yi <br> etiketine dönüştürmeme yardımcı oluyor --}}
+                    {!! nl2br($post['content']) !!}
                 </p>
             </div>
         </div>
