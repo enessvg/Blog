@@ -1,1 +1,1 @@
-yaptığım bir hata sonucu branch kısmını mainden profile yaparak projeye ulaşabilirsiniz
+Bu depo, bu projenin son hali değildir son halleri başka depodadır ulaşmak için mesaj atmanız yeterli.
